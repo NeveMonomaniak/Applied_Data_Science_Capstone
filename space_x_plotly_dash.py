@@ -1,16 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 get_ipython().system(' pip install dash   ')
 get_ipython().system(' pip install dash-html-components                                         ')
 get_ipython().system(' pip install dash-core-components                                     ')
 get_ipython().system(' pip install plotly')
 
-
-# In[2]:
 
 
 import dash
@@ -19,14 +11,6 @@ import dash_core_components as dcc
 import plotly.graph_objects as go
 import plotly.express as px
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 # Import required libraries
@@ -43,8 +27,10 @@ spacex_df = mydata
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
 
+
 # Create a dash application
 app = dash.Dash(__name__)
+
 
 # Create an app layout
 app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
@@ -83,6 +69,8 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
                                 html.Div(dcc.Graph(id='success-payload-scatter-chart')),
                                 ])
 
+
+
 # TASK 2:
 # Add a callback function for `site-dropdown` as input, `success-pie-chart` as output
 @app.callback(
@@ -99,6 +87,8 @@ def build_graph(site_dropdown):
         piechart = px.pie(data_frame = specific_df, names='class',title='Total Launch for a Specific Site')
         return piechart
 
+      
+      
 # TASK 4:
 # Add a callback function for `site-dropdown` and `payload-slider` as inputs, `success-payload-scatter-chart` as output
 @app.callback(
@@ -125,9 +115,5 @@ def update_graph(site_dropdown, payload_slider):
 if __name__ == '__main__':
     app.run_server()
 
-
-# In[ ]:
-
-
-
-
+    
+    
